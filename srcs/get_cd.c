@@ -6,11 +6,14 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:43:05 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/03/30 22:00:23 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/01 20:14:24 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static char *g_current_pwd;
+static char *g_old_pwd;
 
 void		check_cd(char *path)
 {
@@ -39,8 +42,16 @@ void		check_cd(char *path)
 	}
 }
 
-void		get_pwd(char **args, char **env, char *path)
+void		get_pwd(int ret_dir, char *path)
 {
+	char	*buf;
+	char	*pwd;
+
+	if (ret_dir == 0)
+	{
+		pwd = getcwd(buf, BUFF_SIZE + 1);
+		ft_putendl(pwd);
+	}
 }
 
 void		get_cd(char **args, char **env)
@@ -56,16 +67,27 @@ void		get_cd(char **args, char **env)
 			path = ft_strjoin(path, args[1] + 1);
 			check_cd(path);
 			ret_dir = chdir(path);
+			get_pwd(ret_dir, path);
+			return ;
+		}
+		if (args[1][0] == '-')
+		{
+			path = ft_strjoin(path, args[1] + 1);
+			check_cd(path);
+			ret_dir = chdir(path);
+			get_pwd(ret_dir, path);
 			return ;
 		}
 		check_cd(args[1]);
 		ret_dir = chdir(args[1]);
+		get_pwd(ret_dir, path);
 		return ;
 	}
 	else if((ft_strncmp(args[0], "cd", 2)) == 0 && args[1] == NULL)
 	{
 		check_cd(path);
 		ret_dir = chdir(path);
+		get_pwd(ret_dir, path);
 		return ;
 	}
 }
