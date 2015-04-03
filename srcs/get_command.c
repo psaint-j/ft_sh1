@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 20:24:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/01 18:58:17 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/03 18:10:31 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 char	*get_command(char *arg, char **env)
 {
 	char			**path;
-	char			*line;
 	char			*command;
 	DIR				*dir;
 	struct dirent	*dent;
 	int				i;
 
 	i = 0;
-	line = get_env(env, "PATH");
-	path = ft_strsplit(line, ':');
-	//print_myenv(path);
+	path = ft_strsplit(get_env(env, "PATH"), ':');
 	command = NULL;
 	while (i < 5)
 	{

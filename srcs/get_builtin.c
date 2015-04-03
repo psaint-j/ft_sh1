@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_params.c                                       :+:      :+:    :+:   */
+/*   get_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/04 16:53:38 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/03 04:02:09 by psaint-j         ###   ########.fr       */
+/*   Created: 2015/04/03 02:19:51 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/04/03 17:05:30 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <stdio.h>
 
-char	**get_params(void)
+int		get_builtin(char *arg)
 {
-	char	*line;
-	char	**args;
+	int		ret_builtin;
 
-	get_next_line(0, &line);
-	if (line)
-	{
-		args = ft_strsplit(line, ' ');
-		return (args);
-	}
-	return (NULL);
+	ret_builtin = 0;
+	if ((ft_strncmp(arg, "cd", ft_strlen(arg))) == 0)
+		ret_builtin = 1;
+	if ((ft_strncmp(arg, "env", ft_strlen(arg))) == 0)
+		ret_builtin = 1;
+	if ((ft_strncmp(arg, "setenv", ft_strlen(arg))) == 0)
+		ret_builtin = 1;
+	if ((ft_strncmp(arg, "unsetenv", ft_strlen(arg))) == 0)
+		ret_builtin = 1;
+	return (ret_builtin);
 }

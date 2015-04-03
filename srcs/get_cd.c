@@ -6,14 +6,11 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:43:05 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/01 20:14:24 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/03 05:46:01 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static char *g_current_pwd;
-static char *g_old_pwd;
 
 void		check_cd(char *path)
 {
@@ -42,22 +39,30 @@ void		check_cd(char *path)
 	}
 }
 
-void		get_pwd(int ret_dir, char *path)
+void		get_pwd(int ret_dir, char *path, char **env)
 {
-	char	*buf;
-	char	*pwd;
+	char	buf[1024];
 
 	if (ret_dir == 0)
 	{
-		pwd = getcwd(buf, BUFF_SIZE + 1);
-		ft_putendl(pwd);
+		getcwd(buf, sizeof(buf));
+		modif_setenv("PWD", buf, env);
 	}
+}
+void		get_old_pwd(char *old_path, char **env)
+{
+	char	buf[1024];
+	
+	getcwd(buf, sizeof(buf));
+	modif_setenv("OLDPWD", buf, env);
+	old_path = ft_strdup(buf);
 }
 
 void		get_cd(char **args, char **env)
 {
 	int		ret_dir;
 	char	*path;
+	char	*old_path;
 	path = get_env(env, "HOME");
 
 	if ((ft_strncmp(args[0], "cd", 2)) == 0 && args[1] != NULL)
@@ -66,28 +71,32 @@ void		get_cd(char **args, char **env)
 		{
 			path = ft_strjoin(path, args[1] + 1);
 			check_cd(path);
+			get_old_pwd(old_path, env);
 			ret_dir = chdir(path);
-			get_pwd(ret_dir, path);
+			get_pwd(ret_dir, path, env);
 			return ;
 		}
 		if (args[1][0] == '-')
 		{
-			path = ft_strjoin(path, args[1] + 1);
+			path = ft_strjoin(get_env(env, "OLDPWD"), args[1] + 1);
 			check_cd(path);
+			get_old_pwd(old_path, env);
 			ret_dir = chdir(path);
-			get_pwd(ret_dir, path);
+			get_pwd(ret_dir, path, env);
 			return ;
 		}
 		check_cd(args[1]);
+		get_old_pwd(old_path, env);
 		ret_dir = chdir(args[1]);
-		get_pwd(ret_dir, path);
+		get_pwd(ret_dir, path, env);
 		return ;
 	}
 	else if((ft_strncmp(args[0], "cd", 2)) == 0 && args[1] == NULL)
 	{
 		check_cd(path);
+		get_old_pwd(old_path, env);
 		ret_dir = chdir(path);
-		get_pwd(ret_dir, path);
+		get_pwd(ret_dir, path, env);
 		return ;
 	}
 }

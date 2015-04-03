@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 14:44:53 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/01 22:18:24 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/03 22:02:40 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 
 static char	*g_login;
+char **g_env;
 
 void	signhandler(int signum)
 {
@@ -34,19 +35,25 @@ int		main(int ac, char **av, char **env)
 	int			size;
 
 	size = ft_countab(env);
+	g_env = malloc(sizeof(char *) * 2000);
+	copy_tab(env, g_env);
 	while (42)
 	{
-		g_login = get_user(env);
+		g_login = get_user(g_env);
 		check_sign();
 		get_prompt(g_login);
 		args = get_params();
 		if (args[0])
 		{
-			command = get_command(args[0], env);
+			command = get_command(args[0], g_env);
 			if ((ft_strncmp(args[0], "env", 3)) == 0)
-				print_myenv(env);
-			get_printenv(args, env, size);
-			get_cd(args, env);
+				print_myenv(g_env);
+			if ((ft_strncmp(args[0], "setenv", 6)) == 0)
+				modif_setenv(args[1], args[2], g_env);
+			if ((ft_strncmp(args[0], "unsetenv", 8)) == 0)
+				del_unsetenv(args[1], g_env);
+			get_printenv(args, g_env, size);
+			get_cd(args, g_env);
 			if ((ft_strncmp(args[0], "cd", 2)) != 0)
 				get_exec(args, command);
 			if (args && command)

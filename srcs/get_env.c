@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 16:11:37 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/03/30 22:33:50 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/03 21:47:39 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,17 @@ char	*get_env(char **env, char *path)
 	return (args_return);
 }
 
-void	print_tab(char **tab, int count)
+void	copy_tab(char **src, char **dst)
 {
-//	int		count;:w
 	int		i;
 
 	i = 0;
-//	count = ft_countab(tab);
-	//	ft_putnbr(count);
-	while (i != count)
+	while (src[i])
 	{
-		ft_putendl(tab[i]);
+		dst[i] = ft_strdup(src[i]);
 		i++;
 	}
+	dst[i] = NULL;
 }
 
 void	get_printenv(char **args, char **env, int size)
@@ -69,22 +67,16 @@ void	get_printenv(char **args, char **env, int size)
 		if (args[1])
 		{
 			char	*to_return;
+			char	*get_env_return;
 
-			to_return = ft_strdup(get_env(env, args[1]));
+			get_env_return = NULL;
+			get_env_return = get_env(env, args[1]);
+			if (get_env_return != NULL)
+				to_return = ft_strdup(get_env_return);
 			ft_putendl(to_return);
 			free(to_return);
 		}
 		if (args[0] && args[1] == NULL)
-			print_tab(env, size);
+			print_myenv(env);
 	}
-}
-
-void	push_env(t_env **liste, char *name, char *value)
-{
-	t_env *new;
-	new = (t_env *)malloc(sizeof(*new));
-	new->path = ft_strdup(name);
-	new->value = ft_strdup(value);
-	new->next = *liste;
-	*liste = new;
 }
