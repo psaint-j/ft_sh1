@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 23:05:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/03 21:58:41 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/04 17:03:53 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/minishell.h"
@@ -29,12 +29,14 @@ int			ft_strlen_path(char *str)
 
 int			get_line_path(char *name, char **env)
 {
-	int i;
+	int		i;
+	char	**tab;
 
+	tab = env;
 	i = 0;
-	while (env[i])
+	while (tab[i])
 	{
-		if ((strncmp(name, env[i], ft_strlen_path(env[i]))) == 0)
+		if ((strncmp(name, tab[i], ft_strlen_path(tab[i]))) == 0)
 			return (i);
 		i++;
 	}
@@ -77,17 +79,18 @@ void		add_setenv(char *name, char *value, char **env, int check)
 
 void		del_unsetenv(char *name, char **env)
 {
-	char	*str;
+	char	**tab;
 	int		len;
 	int		i;
+	int		j;
 
 	len = get_line_path(name, env);
 	i = 0;
 	if (len != -1)
 	{
-		while (env[len])
-			len++;
-		ft_putnbr(len);
-		ft_putchar('\n');
+		tab = env;
+		while (tab[i] != tab[len])
+			i++;
+		env[i] = ft_strdup("NOTHING");
 	}
 }

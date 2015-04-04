@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 16:11:37 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/03 21:47:39 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/04 17:06:08 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	print_myenv(char **env)
 	i = 0;
 	while (env[i])
 	{
-		ft_putendl(env[i]);
+		if (ft_strcmp(env[i], "NOTHING") != 0)
+			ft_putendl(env[i]);
 		i++;
 	}
 }
