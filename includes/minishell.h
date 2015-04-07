@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/29 01:26:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/03/30 21:58:45 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 15:08:53 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,32 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <sys/stat.h>
+
+extern char **g_env;
+
 int					get_next_line(int const fd, char **line);
-char				*get_env(char **env, char *path);
 void				get_prompt(char *login);
-char				*get_c(char *line);
 void				get_cd(char **args, char **env);
+void				get_exec(char **args, char *command, char **env);
+void				get_printenv(char **args, char **env, int size);
+void				get_pwd(int ret_dir, char *path, char **env);
+char				*get_env(char **env, char *path);
+char				*get_user(char **env);
+char				*get_c(char *line);
+char				*get_command(char *arg, char **env);
+char				**get_params(void);
 void				check_cd(char *path);
 int					ft_countab(char **tab);
-void				print_tab(char **tab, int count);
-char				*get_user(char **env);
-void				get_exec(char **args, char *command);
-void				get_printenv(char **args, char **env, int size);
-char				**get_params(void);
-//void				old_cd(char **args, char **env, char *path);
+void				copy_tab(char **src, char **dst);
 void				print_myenv(char **env);
-char				*get_command(char *arg, char **env);
-typedef struct s_env
-{
-	char			*value;
-	char			*path;
-	struct s_env *next;
-}					t_env;
+int					get_line_path(char *name, char **env);
+void				modif_setenv(char *name, char *value, char **env);
+int					get_builtin(char *arg);
+void				add_setenv(char *name, char *value, char **env, int check);
+void				del_unsetenv(char *name, char **env);
+int					ft_strlen_path(char *str);
+void				get_main(char *command, char **args, char **g_env, int size);
+
+//void				old_cd(char **args, char **env, char *path);
 
 #endif
