@@ -6,7 +6,7 @@
 #    By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/29 05:49:15 by psaint-j          #+#    #+#              #
-#    Updated: 2015/03/30 22:36:07 by psaint-j         ###   ########.fr        #
+#    Updated: 2015/04/07 15:13:21 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ SRCS = ./srcs/ft_countab.c\
 	   ./srcs/get_params.c\
 	   ./srcs/get_prompt.c\
 	   ./srcs/main.c\
-	   ./srcs/get_command.c
+	   ./srcs/get_command.c\
+	   ./srcs/get_setenv.c\
+	   ./srcs/get_builtin.c\
+	   ./srcs/get_main.c
 
 OBJ_PATH = ./obj
 OBJS = $(SRCS:%.c=%.o)
@@ -34,14 +37,16 @@ $(NAME):
 		@gcc -c $(SRCS) -g
 		@mv *.o $(OBJ_PATH)
 		@gcc $(CFLAGS) $(LIBF) -o $(NAME) $(OBJ_PATH)/*.o
-		@clear
+		@echo "\033[33m"Compilation of $(NAME) : "\033[32m"Success"\033[0m"
 
 clean:
 		@make clean -C libft/
 		@rm -rf $(OBJ_PATH)
+		@echo "\033[33m"$(OBJ_PATH) : "\033[32m"Deleted"\033[0m"
 
 fclean: clean
 		@make fclean -C libft/
 		@rm -rf $(NAME)
+		@echo "\033[33m"$(NAME) : "\033[32m"Deleted"\033[0m"
 
 re: fclean all
