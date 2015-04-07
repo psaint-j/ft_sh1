@@ -6,7 +6,7 @@
 #    By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/29 05:49:15 by psaint-j          #+#    #+#              #
-#    Updated: 2015/04/07 15:13:21 by psaint-j         ###   ########.fr        #
+#    Updated: 2015/04/07 20:09:55 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = ./srcs/ft_countab.c\
 	   ./srcs/get_command.c\
 	   ./srcs/get_setenv.c\
 	   ./srcs/get_builtin.c\
-	   ./srcs/get_main.c
+	   ./srcs/get_main.c\
+	   ./srcs/get_check_cd.c
 
 OBJ_PATH = ./obj
 OBJS = $(SRCS:%.c=%.o)

@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/29 01:26:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/07 15:08:53 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 21:18:33 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int					get_next_line(int const fd, char **line);
 void				get_prompt(char *login);
 void				get_cd(char **args, char **env);
 void				get_exec(char **args, char *command, char **env);
-void				get_printenv(char **args, char **env, int size);
 void				get_pwd(int ret_dir, char *path, char **env);
 char				*get_env(char **env, char *path);
 char				*get_user(char **env);
@@ -51,7 +50,8 @@ void				add_setenv(char *name, char *value, char **env, int check);
 void				del_unsetenv(char *name, char **env);
 int					ft_strlen_path(char *str);
 void				get_main(char *command, char **args, char **g_env, int size);
-
+void				get_check_cd(char **args, char *path, char *old_path, char **env);
+void				get_old_pwd(char *old_path, char **env);
 //void				old_cd(char **args, char **env, char *path);
 
 #endif

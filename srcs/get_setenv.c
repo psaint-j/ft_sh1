@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 23:05:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/07 15:33:35 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 21:18:17 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void		modif_setenv(char *name, char *value, char **env)
 
 	i = get_line_path(name, env);
 	str = ft_strjoin(name, "=");
-	str = ft_strjoin(str, value);
+	if (name && value)
+		str = ft_strjoin(str, value);
 	if (i != -1)
 	{
 		env[i] = ft_strdup(str);
@@ -67,7 +68,8 @@ void		add_setenv(char *name, char *value, char **env, int check)
 
 	i = 0;
 	str = ft_strjoin(name, "=");
-	str = ft_strjoin(str, value);
+	if (name && value)
+		str = ft_strjoin(str, value);
 	if (check == -1)
 	{
 		while (env[i])

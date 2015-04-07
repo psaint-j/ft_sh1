@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 16:11:37 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/04 17:30:55 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 21:00:18 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*get_env(char **env, char *path)
 		if ((ft_strcmp(args[0], path)) == 0)
 		{
 			args_return = ft_strdup(args[1]);
-			return(args_return);
+			return (args_return);
 		}
 		i++;
 	}
@@ -59,25 +59,4 @@ void	copy_tab(char **src, char **dst)
 		i++;
 	}
 	dst[i] = NULL;
-}
-
-void	get_printenv(char **args, char **env, int size)
-{
-	if ((ft_strncmp(args[0], "printenv", 8)) == 0)
-	{
-		if (args[1])
-		{
-			char	*to_return;
-			char	*get_env_return;
-
-			get_env_return = NULL;
-			get_env_return = get_env(env, args[1]);
-			if (get_env_return != NULL)
-				to_return = ft_strdup(get_env_return);
-			ft_putendl(to_return);
-			free(to_return);
-		}
-		if (args[0] && args[1] == NULL)
-			print_myenv(env);
-	}
 }
