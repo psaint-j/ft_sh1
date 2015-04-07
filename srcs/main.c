@@ -6,12 +6,11 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 14:44:53 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/04 17:06:12 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 15:32:32 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <stdio.h>
 
 static char	*g_login;
 char **g_env;
@@ -43,27 +42,7 @@ int		main(int ac, char **av, char **env)
 		check_sign();
 		get_prompt(g_login);
 		args = get_params();
-		if (args[0])
-		{
-			command = get_command(args[0], g_env);
-			if ((ft_strncmp(args[0], "env", 3)) == 0)
-				print_myenv(g_env);
-			if ((ft_strncmp(args[0], "setenv", 6)) == 0)
-				modif_setenv(args[1], args[2], g_env);
-			if ((ft_strncmp(args[0], "unsetenv", 8)) == 0)
-				del_unsetenv(args[1], g_env);
-			get_printenv(args, g_env, size);
-			get_cd(args, g_env);
-			if ((ft_strncmp(args[0], "cd", 2)) != 0)
-				get_exec(args, command);
-			if (args && command)
-			{
-				free(args);
-				free(command);
-			}
-		}
+		get_main(command, args, g_env, size);
 	}
-	//	(void)ac;
-	//	(void)av;
 	return (0);
 }

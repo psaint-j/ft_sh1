@@ -6,28 +6,26 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/24 17:24:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/03 17:31:09 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 15:45:06 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	get_exec(char **args, char *command)
+void		get_exec(char **args, char *command, char **env)
 {
+	int		father;
+
 	if ((ft_strncmp(args[0], "exit", 4)) == 0)
 		exit (0);
 	if ((ft_strncmp(args[0], "exit", 4)) != 0 && command != NULL)
 	{
-		int			father;
-		pid_t		fork();
-
 		father = fork();
 		if (father > 0)
 			wait(NULL);
 		if (father == 0)
 		{
-			execve(command, args++,NULL);
-			//			exit(0);
+			execve(command, args++, env);
 		}
 	}
 	else

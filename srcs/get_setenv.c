@@ -6,9 +6,10 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 23:05:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/04 17:03:53 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/07 15:33:35 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int			ft_strlen_path(char *str)
