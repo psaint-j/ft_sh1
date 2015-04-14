@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/29 01:26:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/07 21:18:33 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/14 15:25:20 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int					ft_strlen_path(char *str);
 void				get_main(char *command, char **args, char **g_env, int size);
 void				get_check_cd(char **args, char *path, char *old_path, char **env);
 void				get_old_pwd(char *old_path, char **env);
-//void				old_cd(char **args, char **env, char *path);
-
+void				if_setenv(char **args, char *args_n, char **g_env);
+void				if_printenv(char **args, char **env);
 #endif

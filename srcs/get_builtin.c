@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/03 02:19:51 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/07 15:00:51 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/04/10 11:00:38 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		get_builtin(char *arg)
 	if ((ft_strncmp(arg, "setenv", ft_strlen(arg))) == 0)
 		ret_builtin = 1;
 	if ((ft_strncmp(arg, "unsetenv", ft_strlen(arg))) == 0)
+		ret_builtin = 1;
+	if ((ft_strncmp(arg, "printenv", ft_strlen(arg))) == 0)
 		ret_builtin = 1;
 	return (ret_builtin);
 }

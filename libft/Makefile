@@ -6,7 +6,7 @@
 #    By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 11:06:20 by psaint-j          #+#    #+#              #
-#    Updated: 2015/03/29 06:21:25 by psaint-j         ###   ########.fr        #
+#    Updated: 2015/04/02 19:07:24 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,14 +143,14 @@ OBJ =  ft_bzero.o \
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -c $(SRC) -I .
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@gcc -Wall -Werror -Wextra -c $(SRC) -I .
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
