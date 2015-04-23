@@ -16,8 +16,7 @@ void		get_exec(char **args, char *command, char **env)
 {
 	int		father;
 
-	if ((ft_strncmp(args[0], "exit", 4)) == 0)
-		exit (0);
+	get_exit(args);
 	if ((ft_strncmp(args[0], "exit", 4)) != 0 && command != NULL)
 	{
 		father = fork();
@@ -35,5 +34,21 @@ void		get_exec(char **args, char *command, char **env)
 			ft_putstr("minishell: command not found: ");
 			ft_putendl(args[0]);
 		}
+	}
+}
+
+void		get_exit(char **args)
+{
+	int		i;
+	
+	i = 0;
+	if ((ft_strncmp(args[0], "exit", 4)) == 0)
+	{
+		if (args[1])
+		{
+			i = ft_atoi(args[1]);
+			exit (i);
+		}
+		exit (i);
 	}
 }

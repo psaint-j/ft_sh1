@@ -54,4 +54,6 @@ void				get_check_cd(char **args, char *path, char *old_path, char **env);
 void				get_old_pwd(char *old_path, char **env);
 void				if_setenv(char **args, char *args_n, char **g_env);
 void				if_printenv(char **args, char **env);
+char				*get_command_path(char *arg, char **env);
+void				get_exit(char **args);
 #endif

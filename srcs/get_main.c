@@ -27,7 +27,7 @@ void	get_main(char *command, char **args, char **g_env, int size)
 		if ((ft_strncmp(args[0], "unsetenv", 8)) == 0)
 			del_unsetenv(args[1], g_env);
 		get_cd(args, g_env);
-		if ((get_builtin(args[0])) == 0)
+		if ((get_builtin(args[0])) != 1)
 			get_exec(args, command, g_env);
 		if (args && command)
 		{

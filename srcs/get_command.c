@@ -37,5 +37,30 @@ char	*get_command(char *arg, char **env)
 		}
 		i++;
 	}
+	command = get_command_path(arg, env);
 	return (command);
+}
+
+char	*get_command_path(char *arg, char **env)
+{
+	int ret;
+	
+	ret = 0;
+	if (strncmp(arg, "/", 1) == 0)
+		ret = 1;
+	if (strncmp(arg, "./", 2) == 0)
+		ret = 1;
+	if (ret == 1)
+	{
+		if (access(arg, F_OK) != 0)
+		{
+			ft_putstr("cd:cd:13: no such file or directory: ");
+			ft_putendl(arg);
+			arg = NULL;
+			return (arg);
+		}
+		return (arg);
+	}
+	arg = NULL;
+	return (arg);
 }

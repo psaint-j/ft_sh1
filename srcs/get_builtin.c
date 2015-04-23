@@ -17,15 +17,21 @@ int		get_builtin(char *arg)
 	int		ret_builtin;
 
 	ret_builtin = 0;
-	if ((ft_strncmp(arg, "cd", ft_strlen(arg))) == 0)
+	if ((ft_strcmp(arg, "cd")) == 0)
 		ret_builtin = 1;
-	if ((ft_strncmp(arg, "env", ft_strlen(arg))) == 0)
+	if ((ft_strcmp(arg, "env")) == 0)
 		ret_builtin = 1;
-	if ((ft_strncmp(arg, "setenv", ft_strlen(arg))) == 0)
+	if ((ft_strcmp(arg, "setenv")) == 0)
 		ret_builtin = 1;
-	if ((ft_strncmp(arg, "unsetenv", ft_strlen(arg))) == 0)
+	if ((ft_strcmp(arg, "unsetenv")) == 0)
 		ret_builtin = 1;
-	if ((ft_strncmp(arg, "printenv", ft_strlen(arg))) == 0)
+	if ((ft_strcmp(arg, "printenv")) == 0)
 		ret_builtin = 1;
+	if ((ft_strcmp(arg, "exit")) == 0)
+		ret_builtin = 2;
+	if ((ft_strncmp(arg, "/", 1)) == 0)
+		ret_builtin = 2;
+	if ((ft_strncmp(arg, "./", 2)) == 0)
+		ret_builtin = 2;
 	return (ret_builtin);
 }
