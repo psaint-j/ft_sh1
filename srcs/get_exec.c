@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/24 17:24:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/07 20:00:38 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/07 19:24:52 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		get_exec(char **args, char *command, char **env)
 void		get_exit(char **args)
 {
 	int		i;
-	
+
 	i = 0;
 	if ((ft_strncmp(args[0], "exit", 4)) == 0)
 	{

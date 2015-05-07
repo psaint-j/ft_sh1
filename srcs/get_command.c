@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/30 20:24:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/03 18:10:31 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/07 19:25:22 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*get_command(char *arg, char **env)
 char	*get_command_path(char *arg, char **env)
 {
 	int ret;
-	
+
 	ret = 0;
 	if (strncmp(arg, "/", 1) == 0)
 		ret = 1;

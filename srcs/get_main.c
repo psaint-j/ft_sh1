@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/07 15:15:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/14 15:25:17 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/07 19:24:04 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	get_main(char *command, char **args, char **g_env, int size)
 	}
 }
 
-void		if_setenv(char **args, char *args_n, char **g_env)
+void	if_setenv(char **args, char *args_n, char **g_env)
 {
 	if ((ft_strncmp(args[0], "setenv", 6)) == 0)
 	{
@@ -48,7 +48,7 @@ void		if_setenv(char **args, char *args_n, char **g_env)
 	}
 }
 
-void		if_printenv(char **args, char **env)
+void	if_printenv(char **args, char **env)
 {
 	char	*value;
 

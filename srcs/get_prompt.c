@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 06:58:23 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/04/10 12:00:53 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/07 19:23:08 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*get_user(char **env)
 	char	*login;
 
 	login = ft_strdup(get_env(env, "USER"));
+	if (login == NULL)
+		login = "USER";
 	return (login);
 }
