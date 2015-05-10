@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/07 15:15:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/07 19:24:04 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/09 23:17:53 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	get_main(char *command, char **args, char **g_env, int size)
 	char	*args_n;
 
 	args_n = NULL;
-	if (args[0])
-	{
-		command = get_command(args[0], g_env);
+	if (args[0] && ((command = get_command(args[0], g_env)) || 42)) {
 		if ((ft_strncmp(args[0], "env", 3)) == 0)
-			print_myenv(g_env);
+		{
+			if (args[0] && args[1] == NULL)
+				print_myenv(g_env);
+			if (args[1] && ++args)
+				command = env_exe(args, g_env);
+		}
 		if_setenv(args, args_n, g_env);
 		if_printenv(args, g_env);
 		if ((ft_strncmp(args[0], "unsetenv", 8)) == 0)
@@ -29,7 +32,7 @@ void	get_main(char *command, char **args, char **g_env, int size)
 		get_cd(args, g_env);
 		if ((get_builtin(args[0])) != 1)
 			get_exec(args, command, g_env);
-		if (args && command)
+		if (args != NULL && command != NULL && !(args = NULL))
 		{
 			free(args);
 			free(command);
@@ -63,4 +66,16 @@ void	if_printenv(char **args, char **env)
 		}
 		print_myenv(env);
 	}
+}
+
+char	*env_exe(char **args, char **g_env)
+{
+	char	*command;
+
+	command = get_command(args[0], g_env);
+	if (command != NULL)
+	{
+		return (command);
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 16:11:37 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/07 14:34:19 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/09 16:51:54 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ char	*get_env(char **env, char *path)
 		args = ft_strsplit(tab[i], '=');
 		if ((ft_strcmp(args[0], path)) == 0)
 		{
-			args_return = ft_strdup(args[1]);
+			args_return = NULL;
+			if (args[1])
+				args_return = ft_strdup(args[1]);
 			return (args_return);
 		}
 		i++;
