@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 16:11:37 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/09 16:51:54 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/10 05:36:19 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ void	copy_tab(char **src, char **dst)
 		i++;
 	}
 	dst[i] = NULL;
+}
+
+void	init_env_i(char **env)
+{
+	modif_setenv("ITERM_PROFILE", "Default", env);
+	modif_setenv("COLORFGB","7;0", env);
+	modif_setenv("USER", "$", env);
+	modif_setenv("PATH", "/nfs/zfs-student-4/users/2014/psaint-j/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin", env);
+	modif_setenv("TERM","xterm-256color", env);
 }

@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/07 15:15:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/09 23:17:53 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/10 05:37:11 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	get_main(char *command, char **args, char **g_env, int size)
 				print_myenv(g_env);
 			if (args[1] && ++args)
 				command = env_exe(args, g_env);
+			if (args[0][1] == 'i')
+			{
+				deleted_env(g_env);
+				init_env_i(g_env);
+			}
 		}
 		if_setenv(args, args_n, g_env);
 		if_printenv(args, g_env);
@@ -37,6 +42,20 @@ void	get_main(char *command, char **args, char **g_env, int size)
 			free(args);
 			free(command);
 		}
+	}
+}
+
+void	deleted_env(char **env)
+{
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	tmp = env;
+	while (tmp[i])
+	{
+		env[i] = ft_strdup("NOTHING");
+		i++;
 	}
 }
 
