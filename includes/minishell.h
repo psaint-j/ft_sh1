@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/29 01:26:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/10 05:36:44 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/10 06:18:27 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void				get_exit(char **args);
 char				*env_exe(char **args, char **g_env);
 void				init_env(char **env);
 void				init_env_i(char **env);
-void				deleted_env(char **env);
+void				deleted_env(char **args, char **env);
 #endif
