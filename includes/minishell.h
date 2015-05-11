@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/29 01:26:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/10 06:18:27 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/11 15:33:52 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include <stdio.h>
+
 extern char **g_env;
 
 int					get_next_line(int const fd, char **line);
@@ -49,8 +50,10 @@ int					get_builtin(char *arg);
 void				add_setenv(char *name, char *value, char **env, int check);
 void				del_unsetenv(char *name, char **env);
 int					ft_strlen_path(char *str);
-void				get_main(char *command, char **args, char **g_env, int size);
-void				get_check_cd(char **args, char *path, char *old_path, char **env);
+void				get_main(char *command, char **args,
+					char **g_env, int size);
+void				get_check_cd(char **args, char *path,
+					char *old_path, char **env);
 void				get_old_pwd(char *old_path, char **env);
 void				if_setenv(char **args, char *args_n, char **g_env);
 void				if_printenv(char **args, char **env);
@@ -60,4 +63,5 @@ char				*env_exe(char **args, char **g_env);
 void				init_env(char **env);
 void				init_env_i(char **env);
 void				deleted_env(char **args, char **env);
+void				free_args(char *arg_1, char **arg_2);
 #endif

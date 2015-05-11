@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/01 23:05:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/10 05:35:19 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/11 16:04:33 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,16 @@ void		del_unsetenv(char *name, char **env)
 	int		i;
 	int		j;
 
-	len = get_line_path(name, env);
-	i = 0;
-	if (len != -1)
+	if (name)
 	{
-		tab = env;
-		while (tab[i] != tab[len])
-			i++;
-		env[i] = ft_strdup("NOTHING");
+		len = get_line_path(name, env);
+		i = 0;
+		if (len != -1)
+		{
+			tab = env;
+			while (tab[i] != tab[len])
+				i++;
+			env[i] = ft_strdup("NOTHING");
+		}
 	}
 }

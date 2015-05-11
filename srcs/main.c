@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 14:44:53 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/10 03:53:19 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/11 15:37:44 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	init_env(char **env)
 	if (*env == NULL)
 	{
 		modif_setenv("ITERM_PROFILE", "Default", env);
-		modif_setenv("COLORFGB","7;0", env);
+		modif_setenv("COLORFGB", "7;0", env);
 		modif_setenv("USER", "$", env);
-		modif_setenv("PATH", "/nfs/zfs-student-4/users/2014/psaint-j/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin", env);
-		modif_setenv("TERM","xterm-256color", env);
+		modif_setenv("PATH",
+		"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin", env);
+		modif_setenv("TERM", "xterm-256color", env);
 	}
 }

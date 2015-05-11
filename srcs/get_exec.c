@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/24 17:24:04 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/09 18:13:14 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/11 15:31:28 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ void		get_exit(char **args)
 		}
 		exit (i);
 	}
+}
+
+void		free_args(char *arg_1, char **arg_2)
+{
+	free(arg_1);
+	free(arg_2);
 }

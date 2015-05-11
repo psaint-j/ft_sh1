@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/07 15:15:20 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/10 06:27:35 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/05/11 15:31:03 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void	get_main(char *command, char **args, char **g_env, int size)
 		if ((get_builtin(args[0])) != 1)
 			get_exec(args, command, g_env);
 		if (args != NULL && command != NULL && !(args = NULL))
-		{
-			free(args);
-			free(command);
-		}
+			free_args(command, args);
 	}
 }
 
