@@ -36,7 +36,7 @@ int		main(int ac, char **av, char **env)
 	size = ft_countab(env);
 	g_env = malloc(sizeof(char *) * 2000);
 	copy_tab(env, g_env);
-	init_env(g_env);
+//	init_env(g_env);
 	while (42)
 	{
 		g_login = get_user(g_env);
