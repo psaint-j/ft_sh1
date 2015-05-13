@@ -37,7 +37,7 @@ int			get_line_path(char *name, char **env)
 	i = 0;
 	while (tab[i])
 	{
-		if ((strncmp(name, tab[i], ft_strlen_path(tab[i]))) == 0)
+		if ((ft_strncmp(name, tab[i], ft_strlen_path(tab[i]))) == 0)
 			return (i);
 		i++;
 	}
